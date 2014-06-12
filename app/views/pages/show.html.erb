@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Line number:</strong>
+  <%= @page.line_number %>
+</p>
+
+<p>
+  <strong>Creative:</strong>
+  <%= @page.creative_id %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

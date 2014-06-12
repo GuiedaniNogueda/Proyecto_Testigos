@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_number: 1
+  format_id: 1
+  start_date: 2014-06-12
+  end_date: 2014-06-12
+
+two:
+  line_number: 1
+  format_id: 1
+  start_date: 2014-06-12
+  end_date: 2014-06-12

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_number: 1
+  campaign: MyString
+  agency_id: 1
+  start_date: 2014-06-12
+  end_date: 2014-06-12
+  site_id: 1
+
+two:
+  order_number: 1
+  campaign: MyString
+  agency_id: 1
+  start_date: 2014-06-12
+  end_date: 2014-06-12
+  site_id: 1

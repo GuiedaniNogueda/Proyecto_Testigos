@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Line number:</strong>
+  <%= @line.line_number %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @line.format_id %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @line.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @line.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_line_path(@line) %> |
+<%= link_to 'Back', lines_path %>

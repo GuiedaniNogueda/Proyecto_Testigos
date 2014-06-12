@@ -1,0 +1,25 @@
+<%= form_for(@creative) do |f| %>
+  <% if @creative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creative.errors.count, "error") %> prohibited this creative from being saved:</h2>
+
+      <ul>
+      <% @creative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :creative_name %><br>
+    <%= f.text_field :creative_name %>
+  </div>
+  <div class="field">
+    <%= f.label :order_id %><br>
+    <%= f.number_field :order_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
