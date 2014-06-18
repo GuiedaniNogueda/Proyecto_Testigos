@@ -11,11 +11,9 @@ Testigos::Application.routes.draw do
 
   resources :images
   
-
-  resources :orders do
-    resources :creatives  
-  end
-
+  resources :creatives
+  
+  resources :orders
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
