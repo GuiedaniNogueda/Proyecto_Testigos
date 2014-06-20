@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
   end
 
   # GET /images/1
@@ -14,35 +15,48 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = Image.new
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
+    @image = @creative.images.new
   end
 
   # GET /images/1/edit
   def edit
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
+    @image = @creative.images.find(params[:id])
+  end
+
+  def url_options
+    { order_id: params[:order_id], creative_id: params[:creative_id] }.merge(super)
   end
 
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
 
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @image }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
+
+    @image = @creative.images.new(image_params)
+
+    if @image.save
+      redirect_to order_creative_images_path
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
+    @image = @creative.images.find(params[:id])
+
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to order_creative_image_path(@image), notice: 'Image was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +68,14 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:creative_id])
+    @image = @creative.images.find(params[:id])
+
+
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to order_creative_images_path }
       format.json { head :no_content }
     end
   end

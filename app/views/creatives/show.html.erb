@@ -10,5 +10,6 @@
   <%= @creative.order_id %>
 </p>
 
-<%= link_to 'Edit', edit_creative_path(@creative) %> |
-<%= link_to 'Back', creatives_path %>
+<%= link_to 'Edit', edit_order_creative_path(@creative) %> |
+<%= link_to 'Back', order_creatives_path %> | 
+<%= link_to 'Imagenes', order_creative_images_path(@creative) %>

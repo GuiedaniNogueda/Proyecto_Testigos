@@ -1,4 +1,4 @@
-<h1>Listing images</h1>
+<h1>IMAGENES</h1>
 
 <table>
   <thead>
@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @images.each do |image| %>
+    <% @creative.images.each do |image| %>
       <tr>
         <td><%= image.file_id %></td>
         <td><%= image.creative_id %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', order_creative_image_path(image) %></td>
+        <td><%= link_to 'Edit', edit_order_creative_image_path(image) %></td>
+        <td><%= link_to 'Destroy', order_creative_image_path(image), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Image', new_image_path %>
+<%= link_to 'New Image', new_order_creative_image_path %>

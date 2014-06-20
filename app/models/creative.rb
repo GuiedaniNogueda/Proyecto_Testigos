@@ -1,3 +1,7 @@
 class Creative < ActiveRecord::Base
-	has_one :order
+	belongs_to :order
+
+	has_many :images
+
+	has_and_belongs_to_many :lines
 end

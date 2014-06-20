@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @creatives.each do |creative| %>
+    <% @order.creatives.each do |creative| %>
       <tr>
         <td><%= creative.creative_name %></td>
         <td><%= creative.order_id %></td>
-        <td><%= link_to 'Show', creative %></td>
-        <td><%= link_to 'Edit', edit_creative_path(creative) %></td>
-        <td><%= link_to 'Destroy', creative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', order_creative_path(creative) %></td>
+        <td><%= link_to 'Edit', edit_order_creative_path(creative) %></td>
+        <td><%= link_to 'Destroy', order_creative_path(creative), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Creative', new_creative_path %>
+<%= link_to 'New Creative', new_order_creative_path(@order) %>

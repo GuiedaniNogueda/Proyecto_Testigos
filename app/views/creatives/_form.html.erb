@@ -1,4 +1,4 @@
-<%= form_for(@creative) do |f| %>
+<%= form_for [@order, @creative] do |f| %>
   <% if @creative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@creative.errors.count, "error") %> prohibited this creative from being saved:</h2>

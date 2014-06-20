@@ -4,7 +4,7 @@ class CreativesController < ApplicationController
   # GET /creatives
   # GET /creatives.json
   def index
-    @creatives = Creative.all
+    @order = Order.find(params[:order_id])
   end
 
   # GET /creatives/1
@@ -14,35 +14,43 @@ class CreativesController < ApplicationController
 
   # GET /creatives/new
   def new
-    @creative = Creative.new
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.new
   end
 
   # GET /creatives/1/edit
   def edit
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:id])
+  end
+
+  def url_options
+    { order_id: params[:order_id] }.merge(super)    
   end
 
   # POST /creatives
   # POST /creatives.json
   def create
-    @creative = Creative.new(creative_params)
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.new(creative_params)
 
-    respond_to do |format|
-      if @creative.save
-        format.html { redirect_to @creative, notice: 'Creative was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @creative }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @creative.errors, status: :unprocessable_entity }
-      end
+    if @creative.save
+      redirect_to order_creatives_path
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /creatives/1
   # PATCH/PUT /creatives/1.json
   def update
+
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:id])
+
     respond_to do |format|
       if @creative.update(creative_params)
-        format.html { redirect_to @creative, notice: 'Creative was successfully updated.' }
+        format.html { redirect_to order_creative_path(@creative), notice: 'Creative was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +62,13 @@ class CreativesController < ApplicationController
   # DELETE /creatives/1
   # DELETE /creatives/1.json
   def destroy
+
+    @order = Order.find(params[:order_id])
+    @creative = @order.creatives.find(params[:id])
+
     @creative.destroy
     respond_to do |format|
-      format.html { redirect_to creatives_url }
+      format.html { redirect_to order_creatives_path }
       format.json { head :no_content }
     end
   end
