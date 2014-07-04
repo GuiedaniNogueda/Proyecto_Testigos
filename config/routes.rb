@@ -1,4 +1,5 @@
 Testigos::Application.routes.draw do
+  get "home/index"
   resources :formats
 
   resources :sites
