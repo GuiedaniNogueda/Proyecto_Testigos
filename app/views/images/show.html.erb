@@ -8,6 +8,7 @@
 <p>
   <strong>Creative:</strong>
   <%= @image.creative_id %>
+  <%= image_tag @image.asset.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_order_creative_image_path(@image) %> |
