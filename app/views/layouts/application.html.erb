@@ -4,13 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Testigos GEx</title>
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-	<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/simplex/bootstrap.min.css" rel="stylesheet">		
+	<link href="https://netdna.bootstrapcdn.com/bootswatch/3.1.1/simplex/bootstrap.min.css" rel="stylesheet">
 
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type='text/javascript' src="js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="js/screenshot.js"></script>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+ 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+ 	<%= csrf_meta_tags %>
 
 	<style type="text/css">
 		body { padding-top: 50px; }
