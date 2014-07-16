@@ -4,7 +4,8 @@ class LinesController < ApplicationController
   # GET /lines
   # GET /lines.json
   def index
-    @lines = Line.all
+    @creative = Creative.find(params[:creative_id])
+    @lines = @creative.lines
   end
 
   # GET /lines/1
@@ -14,7 +15,9 @@ class LinesController < ApplicationController
 
   # GET /lines/new
   def new
-    @line = Line.new
+    @order = Order.find(params[:order_id])
+    @creative = Creative.find(params[:creative_id])
+    @line = @creative.lines.new
   end
 
   # GET /lines/1/edit
@@ -25,10 +28,18 @@ class LinesController < ApplicationController
   # POST /lines.json
   def create
     @line = Line.new(line_params)
+    @order = Order.find(params[:order_id])
+    @creative = Creative.find(params[:creative_id])
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to @line, notice: 'Line was successfully created.' }
+        
+        @page = @creative.pages.new
+        @page.creative_id = @creative.id
+        @page.line_id = @line.id
+        @page.save
+
+        format.html { redirect_to order_creative_lines_path(@order, @creative), notice: 'Line was successfully created.' }
         format.json { render action: 'show', status: :created, location: @line }
       else
         format.html { render action: 'new' }

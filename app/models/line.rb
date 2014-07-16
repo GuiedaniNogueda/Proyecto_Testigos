@@ -1,4 +1,5 @@
 class Line < ActiveRecord::Base
 
-	has_and_belongs_to_many :creatives
+	has_many :pages
+	has_many :creatives, through: :pages
 end

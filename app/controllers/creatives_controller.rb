@@ -35,7 +35,7 @@ class CreativesController < ApplicationController
     @creative = @order.creatives.new(creative_params)
 
     if @creative.save
-      redirect_to order_creatives_path
+      redirect_to new_order_creative_line_path(@creative)
     else
       render action: 'new'
     end
