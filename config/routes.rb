@@ -1,17 +1,15 @@
 Testigos::Application.routes.draw do
-  get "home/index"
+  root to: 'orders#new'
+  
   resources :formats
 
   resources :sites
 
   resources :agencies
 
-  resources :pages
-
-  resources :lines
-
   resources :orders do
     resources :creatives do
+      resources :lines
       resources :images
     end
   end
