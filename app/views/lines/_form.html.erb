@@ -30,4 +30,36 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <div id="muestra_lineas">
+    <h1>Listing lines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Line number</th>
+      <th>Format</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lines.each do |li| %>
+      <tr>
+        <td><%= li.line_number %></td>
+        <td><%= li.format_id %></td>
+        <td><%= li.start_date %></td>
+        <td><%= li.end_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+<div id="acciones">
+  <%= link_to 'Regresar', new_order_creative_path(@order) %>
+</div>
 <% end %>

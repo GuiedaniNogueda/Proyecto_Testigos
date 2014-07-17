@@ -18,6 +18,7 @@ class LinesController < ApplicationController
     @order = Order.find(params[:order_id])
     @creative = Creative.find(params[:creative_id])
     @line = @creative.lines.new
+    @lines = @creative.lines
   end
 
   # GET /lines/1/edit
@@ -39,11 +40,9 @@ class LinesController < ApplicationController
         @page.line_id = @line.id
         @page.save
 
-        format.html { redirect_to order_creative_lines_path(@order, @creative), notice: 'Line was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @line }
+        format.html { redirect_to new_order_creative_line_path(@order, @creative), notice: 'Line was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @line.errors, status: :unprocessable_entity }
       end
     end
   end

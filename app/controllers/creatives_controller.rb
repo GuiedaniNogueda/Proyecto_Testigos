@@ -16,6 +16,7 @@ class CreativesController < ApplicationController
   def new
     @order = Order.find(params[:order_id])
     @creative = @order.creatives.new
+    @creatives = @order.creatives
   end
 
   # GET /creatives/1/edit
@@ -35,7 +36,7 @@ class CreativesController < ApplicationController
     @creative = @order.creatives.new(creative_params)
 
     if @creative.save
-      redirect_to new_order_creative_line_path(@creative)
+      redirect_to new_order_creative_path(@order)
     else
       render action: 'new'
     end

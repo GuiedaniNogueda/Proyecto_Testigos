@@ -22,4 +22,36 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <div id="muestra_creativos">
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Creative name</th>
+      <th>Order</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creatives.each do |cr| %>
+      <% if ! cr.new_record? %>
+      <tr>
+        <td><%= cr.creative_name %></td>
+        <td><%= cr.order_id %></td>
+        <td><%= link_to 'Lineas', new_order_creative_line_path(@order, cr) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+  </table>
+
+  </div>
+  <div id="acciones">
+    <%= link_to 'Regresar', new_order_path %>
+  </div>
 <% end %>
